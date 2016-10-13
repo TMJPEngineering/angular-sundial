@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sundial Demo Page</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body ng-app="demoApp">
+    <div class="container" ng-controller="MainController as mc">
+      <div class="row">
+        <label class="form-label">Language:</label>
+        <select class="form-control" ng-model="mc.locale" ng-change="mc.onLocaleChange(mc.locale)">
+          <option value="en-US">English</option>
+          <option value="ja-JP">Japanese</option>
+          <option value="de-DE">German</option>
+        </select>
+        <label class="form-label">Weekday Type:</label>
+        <select class="form-control" ng-model="mc.options['weekday']">
+          <option value="narrow">Narrow</option>
+          <option value="short">Short</option>
+          <option value="long">Long</option>
+        </select>
+        <label class="form-label">Month Type:</label>
+        <select class="form-control" ng-model="mc.options['month']">
+          <option value="numeric">Numeric</option>
+          <option value="2-digit">2-digit</option>
+          <option value="narrow">Narrow</option>
+          <option value="short">Short</option>
+          <option value="long">Long</option>
+        </select>
+        <label class="form-label">Day Type:</label>
+        <select class="form-control" ng-model="mc.options['day']">
+          <option value="numeric">Numeric</option>
+          <option value="2-digit">2-digit</option>
+        </select>
+        <label class="form-label">Year Type:</label>
+        <select class="form-control" ng-model="mc.options['year']">
+          <option value="numeric">Numeric</option>
+          <option value="2-digit">2-digit</option>
+        </select>
+        <label class="form-label">Hour Type:</label>
+        <select class="form-control" ng-model="mc.options['hour']">
+          <option value="numeric">Numeric</option>
+          <option value="2-digit">2-digit</option>
+        </select>
+        <label class="form-label">Minute Type:</label>
+        <select class="form-control" ng-model="mc.time['minute']">
+          <option value="numeric">Numeric</option>
+          <option value="2-digit">2-digit</option>
+        </select>
+        <label class="form-label">Date:</label>
+        <input type="text" class="form-control" placeholder="Enter a date" ng-model="mc.date" />
+        <hr />
+        <button class="btn btn-info" ng-click="mc.getDate(mc.date, mc.options)">getDate</button>
+        <button class="btn btn-info" ng-click="mc.getDateWithWeek(mc.date, mc.options)">getDateWithWeek</button>
+        <button class="btn btn-info" ng-click="mc.getDateWithTime(mc.date, mc.time, mc.options)">getDateWithTime</button>
+        <button class="btn btn-info" ng-click="mc.getWeekDay(mc.date, mc.options)">getWeekDay</button>
+        <button class="btn btn-info" ng-click="mc.getMilitaryTime(mc.date)">getMilitaryTime</button>
+        <button class="btn btn-info" ng-click="mc.getAmPmTime(mc.date)">getAmPmTime</button>
+        <button class="btn btn-info" ng-click="mc.getTime(mc.date)">getTime</button>
+        <button class="btn btn-info" ng-click="mc.getGMT(mc.date)">getGMT</button>
+        <hr />
+        {{ mc.outputDate }}
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="demo/app.js"></script>
+    <script src="angular-sundial.js"></script>
+  </body>
+</html>
